@@ -1,0 +1,213 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-accent-2: var(--accent-2);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Black and Grey Monochromatic Theme */
+:root {
+  --radius: 0.75rem;
+  --background: #09090b; /* Zinc 950 */
+  --foreground: #fafafa; /* Zinc 50 */
+  --card: #18181b; /* Zinc 900 */
+  --card-foreground: #fafafa;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #f4f4f5; /* Zinc 100 */
+  --primary-foreground: #09090b;
+  --accent-2: #71717a; /* Zinc 500 */
+  --secondary: #27272a; /* Zinc 800 */
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa; /* Zinc 400 */
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #d4d4d8; /* Zinc 300 */
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        color-mix(in oklab, var(--primary) 20%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 90% 10%,
+        color-mix(in oklab, var(--accent-2) 12%, transparent),
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+
+  /* Animated Stars */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 50px 160px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 90px 40px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 130px 80px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 160px 120px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 220px 230px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 240px 270px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 250px 360px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 290px 240px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 330px 280px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 360px 320px, #a1a1aa, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    animation: animate-stars 20s linear infinite;
+    opacity: 0.8;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: 
+      radial-gradient(1.5px 1.5px at 50px 50px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 150px 150px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 250px 100px, #a1a1aa, rgba(0,0,0,0)),
+      radial-gradient(2.5px 2.5px at 350px 200px, #a1a1aa, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    animation: animate-stars-slow 40s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes animate-stars {
+    from { background-position: 0 0; }
+    to { background-position: 0 -400px; }
+  }
+
+  @keyframes animate-stars-slow {
+    from { background-position: 0 0; }
+    to { background-position: 0 -500px; }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff, #71717a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, var(--primary), var(--accent-2));
+  }
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  }
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+      0 20px 60px -20px color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+  .reveal {
+    animation: reveal 0.7s ease-out both;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-ripple-large {
+    animation: ripple-large 1.2s cubic-bezier(0.1, 0.5, 0.3, 1) forwards;
+  }
+  .animate-ripple-small {
+    animation: ripple-small 1s cubic-bezier(0.1, 0.5, 0.3, 1) forwards;
+  }
+  
+  @keyframes ripple-large {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.8;
+      border-width: 4px;
+    }
+    100% {
+      width: 600px;
+      height: 600px;
+      opacity: 0;
+      border-width: 0px;
+    }
+  }
+
+  @keyframes ripple-small {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.4;
+      border-width: 2px;
+    }
+    100% {
+      width: 150px;
+      height: 150px;
+      opacity: 0;
+      border-width: 0px;
+    }
+  }
+}
